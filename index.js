@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { dbConnect } from "./config/database.js";
 import contactRouter from "./routes/contactRoutes.js";
 
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
 //middlewares
 app.use(express.json());
 app.use(express.static("public"));
+app.use(cors());
 
 await dbConnect();
 
