@@ -17,6 +17,10 @@ const contactSchema = new Schema({
     type: String,
     required: false,
   },
+  modified: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export default model("Contact", contactSchema);

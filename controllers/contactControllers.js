@@ -25,4 +25,42 @@ const postContact = async (req, res) => {
   });
 };
 
-export { getContacts, postContact };
+const putContact = async (req, res) => {
+  const { id } = req.params;
+
+  const contacto = await Contact.findById(id);
+
+  if (!contacto) {
+    return res.status(404).json({
+      msg: "Contacto no encontrado",
+    });
+  }
+
+  contacto.modified = !contacto.modified;
+
+  await contacto.save();
+
+  return res.status(200).json({
+    msg: "Información de contacto modificada exitosamente!",
+    contacto,
+  });
+};
+
+const deleteContact = async (req, res) => {
+  const { id } = req.params;
+
+  const contacto = await Contact.findById(id);
+
+  if (!contacto) {
+    return res.status(404).json({
+      msg: "Contacto no encontrado",
+    });
+  }
+  await Contact.findByIdAndDelete(id);
+
+  return res.status(200).json({
+    msg: "Contacto eliminado",
+  });
+};
+
+export { getContacts, postContact, putContact, deleteContact };
