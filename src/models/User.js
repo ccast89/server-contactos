@@ -5,10 +5,6 @@ const UserSchema = new Schema(
     username: {
       type: String,
       required: true,
-    },
-    phone: {
-      type: Number,
-      required: true,
       unique: true,
       trim: true,
     },
@@ -26,7 +22,7 @@ const UserSchema = new Schema(
     role: {
       type: String,
       enum: ["user", "admin", "superAdmin"],
-      defualt: "user",
+      default: "user",
     },
     emailVerified: {
       type: Boolean,

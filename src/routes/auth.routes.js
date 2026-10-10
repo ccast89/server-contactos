@@ -1,29 +1,10 @@
 import Router from "express";
-import User from "../models/User.js";
+import { getUsers, register } from "../controllers/auth.controller.js";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
-  const users = await User.find();
-  res.json({
-    msg: "Todo bien",
-    users,
-  });
-});
+router.get("/", getUsers);
 
-router.post("/", async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-
-    const user = new User({ username, email, password });
-
-    await user.save();
-
-    return req.statusCode(200).json({
-      ok: true,
-      msg: "Usuario creado!",
-    });
-  } catch (error) {}
-});
+router.post("/register", register);
 
 export default router;
