@@ -71,7 +71,7 @@ const login = async (req, res) => {
 
     //Cookies
     const cookieOptions = {
-      httpOnly: true,
+      httpOnly: true, //Esto es para q el cliente no tenga acceso al token
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       maxAge: 60 * 60 * 1000, //1hora
