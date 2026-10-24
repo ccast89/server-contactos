@@ -12,7 +12,8 @@ app.use(cors());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
-
+/* app.use("/category,")
+ */
 await dbConnect();
 
 app.listen(PORT, () => console.log(`Server online en puerto: ${PORT}`));

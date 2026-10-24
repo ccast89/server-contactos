@@ -52,12 +52,13 @@ export const loginValidation = () => [
     .isEmail()
     .withMessage("Ingresar un email válido")
     .normalizeEmail(),
-  check("password").notEmpty().withMessage("La constraseña es requerida"),
 ];
 
 //Verificacion del password tanto para el register como e login
 export const ValidationPassword = () => [
   check("password")
+    .notEmpty()
+    .withMessage("La constraseña es requerida")
     .isLength({ min: 6 })
     .withMessage("La contraseña debe tener como mínimo 6 caracteres")
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)

@@ -7,6 +7,8 @@ import {
   deleteUser,
   logOut,
   getProfile,
+  UpdatePassword,
+  resendVerificationCode,
 } from "../controllers/auth.controller.js";
 import { authenticate } from "../middlewares/auth.js";
 import {
@@ -36,9 +38,15 @@ router.post(
 );
 router.post("/verify-email", verifyEmailValidation(), verifyEmail);
 router.delete("/:id", deleteUser);
-
 router.get("/", authenticate, getUsers);
 router.post("/logout", authenticate, logOut);
 router.post("/profile", authenticate, getProfile);
-
+router.put(
+  "/password",
+  loginValidation(),
+  ValidationPassword(),
+  handleValidationErrors,
+  UpdatePassword,
+);
+router.post("/resend", loginValidation(), resendVerificationCode);
 export default router;

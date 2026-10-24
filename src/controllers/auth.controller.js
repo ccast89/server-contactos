@@ -198,6 +198,62 @@ const getProfile = (req, res) => {
   }
 };
 
+const UpdatePassword = async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (!user)
+    return res.status(400).json({
+      ok: false,
+      message: "No existe el usuario",
+    });
+
+  if (!user.emailVerified) {
+    return res.status(400).json({
+      ok: false,
+      message: "El email no está verificado",
+    });
+  }
+  user.password = password;
+  await user.save();
+  return res.status(200).json({
+    ok: true,
+    message: "Contraseña actualizada",
+    password: user.password,
+  });
+};
+
+const resendVerificationCode = async (req, res) => {
+  const { email } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return res.status(400).json({
+      ok: false,
+      message: "El correo electrónico no existe",
+    });
+  }
+
+  const verificationCode = user.generateVerificationCode();
+  console.log("Nuevo código de verificación:", verificationCode);
+
+  await user.save();
+  try {
+    await sendVerificationEmail(user.email, user.username, verificationCode);
+    return res.status(200).json({
+      ok: true,
+      message: "Se envió el nuevo código de verificación",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      message: "Error al enviar el email",
+      error,
+    });
+  }
+};
 export {
   getUsers,
   register,
@@ -206,4 +262,6 @@ export {
   deleteUser,
   logOut,
   getProfile,
+  UpdatePassword,
+  resendVerificationCode,
 };
