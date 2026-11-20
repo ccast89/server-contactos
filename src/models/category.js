@@ -8,7 +8,7 @@ const CategoriaSchema = new Schema(
       unique: true,
     },
     estado: {
-      tyoe: Boolean,
+      type: Boolean,
       default: true,
     },
     usuario: {

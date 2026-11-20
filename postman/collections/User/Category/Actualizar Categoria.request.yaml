@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:5500/api/category/
+method: PUT
+order: 3000

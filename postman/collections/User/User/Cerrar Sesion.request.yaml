@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:5500/api/auth/logout
+method: POST
+order: 6000

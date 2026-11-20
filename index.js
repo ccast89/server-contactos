@@ -3,6 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { dbConnect } from "./src/config/database.js";
 import authRoutes from "./src/routes/auth.routes.js";
+import categoryRoutes from "./src/routes/category.routes.js";
+import productRoutes from "./src/routes/product.routes.js";
 
 const app = express();
 const PORT = 5500;
@@ -12,8 +14,9 @@ app.use(cors());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
-/* app.use("/category,")
- */
+app.use("/api/category", categoryRoutes);
+app.use("/api/product", productRoutes);
+
 await dbConnect();
 
 app.listen(PORT, () => console.log(`Server online en puerto: ${PORT}`));

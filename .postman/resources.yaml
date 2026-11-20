@@ -1,0 +1,7 @@
+workspace:
+  id: 7ebb7a80-7bf9-48ad-812a-6e16da05ad20
+cloudResources:
+  collections:
+    ../postman/collections/User: 58547370-1a0215c0-bc60-40e1-9a4e-091b4c59e32c
+    ../postman/collections/Server: 58547370-753a2dd6-45fd-465d-82e8-753f2ee1562c
+    ../postman/collections/My Collection: 58547370-70501f10-e617-4578-a17f-eaddcc7b617f

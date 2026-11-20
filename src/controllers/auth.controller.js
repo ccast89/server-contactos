@@ -236,6 +236,13 @@ const resendVerificationCode = async (req, res) => {
     });
   }
 
+  if (user.emailVerified) {
+    return res.status(403).json({
+      ok: false,
+      message: "El email ya está verificado",
+    });
+  }
+
   const verificationCode = user.generateVerificationCode();
   console.log("Nuevo código de verificación:", verificationCode);
 

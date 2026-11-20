@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://localhost:5500/api/product
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"precio\":\"950000\",\r
+
+    \r
+
+    \r
+
+    }"
+order: 2000

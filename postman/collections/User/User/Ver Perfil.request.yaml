@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:5500/api/auth/profile
+method: POST
+order: 7000

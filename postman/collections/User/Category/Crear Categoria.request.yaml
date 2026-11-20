@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:5500/api/category
+method: POST
+body:
+  type: json
+  content: "{\r\n    \"nombre\":\"Cuerdas\"\r\n}"
+order: 2000

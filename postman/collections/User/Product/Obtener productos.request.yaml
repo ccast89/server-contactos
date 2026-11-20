@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:5500/api/product
+method: GET
+order: 1000

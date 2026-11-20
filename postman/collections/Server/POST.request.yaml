@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://localhost:3000/api/contact
+method: POST
+body:
+  type: json
+  content: "{\"name\":\"Maca\",\r
+
+    \"phone\":\"3815522532\",\r
+
+    \"email\":\"maca@correo.com\",\r
+
+    \"password\":\"1234\"\r
+
+    }"
+order: 2000
