@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{url}}/api/cart/6b020a49f9d5504d3855e9ed"
+method: PUT
+body:
+  type: json
+  content: "{\r\n    \"cantidad\":5\r\n}"
+order: 4000

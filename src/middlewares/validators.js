@@ -2,6 +2,7 @@ import { validationResult } from "express-validator";
 import { check } from "express-validator";
 import User from "../models/User.js";
 import Categoria from "../models/category.js";
+import Product from "../models/Product.js";
 
 export const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);

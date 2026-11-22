@@ -6,15 +6,13 @@ import {
   handleValidationErrors,
   validarProductoPorId,
 } from "../middlewares/validators.js";
-import { getItems } from "../controllers/cart.controller.js";
-
-//   addItem,
-//   deleteItem,
-//   getItems,
-//   updateCant,
-//   deleteCart,
-
-//controladores
+import {
+  addItem,
+  deleteItem,
+  getItems,
+  updateCant,
+  deleteCart,
+} from "../controllers/cart.controller.js";
 
 const router = Router();
 
@@ -23,33 +21,33 @@ router.post(
   "/",
   [
     authenticate,
-    check("productId").custom(validarProductoPorId),
+    check("productoId").custom(validarProductoPorId),
     check("cantidad")
       .notEmpty()
       .withMessage("La cantidad no puede estar vacía")
       .isInt({ min: 1 }),
     handleValidationErrors,
   ],
-  () => {},
+  addItem,
 );
 router.put(
-  "/:productId",
+  "/:productoId",
   [
     authenticate,
-    check("prductId").isMongoId().withMessage("Debe ser un id válido"),
+    check("productoId").isMongoId().withMessage("Debe ser un id válido"),
     handleValidationErrors,
   ],
-  () => {},
+  updateCant,
 );
 router.delete(
-  "/productId",
+  "/:productoId",
   [
     authenticate,
-    check("productId").isMongoId().withMessage("Debe ser un id válido"),
+    check("productoId").isMongoId().withMessage("Debe ser un id válido"),
     handleValidationErrors,
   ],
-  () => {},
+  deleteItem,
 );
-router.delete("/", authenticate, () => {});
+router.delete("/", authenticate, deleteCart);
 
 export default router;

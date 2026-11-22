@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{url}}/api/cart"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"productoId\":\"6b020a49f9d5504d3855e9ed\",\r
+
+    \    \"cantidad\":3\r
+
+    }"
+order: 2000
