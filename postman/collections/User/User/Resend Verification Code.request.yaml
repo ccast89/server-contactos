@@ -1,11 +1,11 @@
 $kind: http-request
-url: http://localhost:5500/api/auth/resend
+url: "{{url}}/api/auth/resend"
 method: POST
 body:
   type: json
   content: "{\r
 
-    \    \"email\":\"carla@gmail.com\"\r
+    \    \"email\":\"dan@gmail.com\"\r
 
     }"
 order: 9000

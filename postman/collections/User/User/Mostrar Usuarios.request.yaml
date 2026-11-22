@@ -1,4 +1,7 @@
 $kind: http-request
-url: http://localhost:5500
+url: "{{url}}/api/auth"
 method: GET
+body:
+  type: json
+  content: ""
 order: 1000

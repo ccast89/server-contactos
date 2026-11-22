@@ -1,0 +1,4 @@
+name: local
+values:
+  - key: url
+    value: 'http://localhost:5500'

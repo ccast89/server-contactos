@@ -1,4 +1,7 @@
 $kind: http-request
-url: http://localhost:5500/api/auth/profile
+url: "{{url}}/api/auth/profile"
 method: POST
+body:
+  type: json
+  content: ""
 order: 7000

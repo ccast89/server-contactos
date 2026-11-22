@@ -1,4 +1,7 @@
 $kind: http-request
-url: http://localhost:5500/api/category/
+url: "{{url}}/api/category/6aff761f85cd3ea465ff6d21"
 method: PUT
+body:
+  type: json
+  content: "{\r\n    \"nombre\":\"Viento\"\r\n}"
 order: 3000

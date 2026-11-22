@@ -1,4 +1,7 @@
 $kind: http-request
-url: http://localhost:5500/api/auth/logout
+url: "{{url}}/api/auth/logout"
 method: POST
+body:
+  type: json
+  content: ""
 order: 6000

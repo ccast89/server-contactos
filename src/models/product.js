@@ -23,6 +23,7 @@ const ProductSchema = new Schema(
     categoria: {
       type: Schema.Types.ObjectId,
       ref: "Categoria",
+      required: true,
     },
     descripcion: {
       type: String,
@@ -33,7 +34,8 @@ const ProductSchema = new Schema(
     },
     img: {
       type: String,
-      //default: ,
+      default:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBMlmZMyak30Jn6GOX4jFDAyu90OLghCqL23-lwES2yA&s=10",
     },
   },
   {

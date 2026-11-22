@@ -48,27 +48,22 @@ const addCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
   const { id } = req.params;
+  const { estado } = req.body;
   const nombre = req.body.nombre.toUpperCase();
-  const validarNombre = await Categoria.findOne({ nombre });
-
+  const validarNombre = await Categoria.findOne({ nombre, _id: { $ne: id } });
+  console.log("ID recibido:", id);
+  console.log("Nombre recibido:", nombre);
+  console.log("Categoría encontrada:", validarNombre);
   if (validarNombre) {
     return res.status(400).json({
       ok: false,
-      message: `Ya existe una categoría ${nombre} ya existe`,
-    });
-  }
-
-  const existeCategoria = await Categoria.findById(id);
-
-  if (!existeCategoria) {
-    return res.status(400).json({
-      ok: false,
-      message: `El id ${id} No existe`,
+      message: `Ya existe una categoría ${nombre}`,
     });
   }
 
   const datos = {
     nombre,
+    estado,
     usuario: req.user._id,
   };
   const categoria = await Categoria.findByIdAndUpdate(id, datos, {
@@ -81,4 +76,27 @@ const updateCategory = async (req, res) => {
     categoria,
   });
 };
-export { getCategories, addCategory, updateCategory };
+
+const deleteCategory = async (req, res) => {
+  const { id } = req.params;
+
+  if (!existeCategoria.estado) {
+    return res.status(400).json({
+      ok: false,
+      message: `La categoría ${existeCategoria.nombre} no está activa`,
+    });
+  }
+
+  const categoriaborrada = await Categoria.findByIdAndUpdate(
+    id,
+    { estado: false },
+    { returnDocument: "after" },
+  );
+
+  return res.status(200).json({
+    ok: true,
+    message: "Categoría eliminada",
+    categoriaborrada,
+  });
+};
+export { getCategories, addCategory, updateCategory, deleteCategory };

@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{url}}/api/product/6b020b7dcbd64623ac213ced"
+method: DELETE
+body:
+  type: json
+  content: ""
+order: 4000

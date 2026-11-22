@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{url}}/api/product"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"nombre\":\"teclado electrico\",\r
+
+    \    \"categoria\":\"6b00e6ee9f83becd65ecf2bf\",\r
+
+    \    \"precio\":\"750.000\"\r
+
+    \r
+
+    }"
+order: 2000

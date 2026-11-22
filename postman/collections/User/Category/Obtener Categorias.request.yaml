@@ -1,4 +1,7 @@
 $kind: http-request
-url: http://localhost:5500/api/category
+url: "{{url}}/api/category"
 method: GET
+body:
+  type: json
+  content: ""
 order: 1000

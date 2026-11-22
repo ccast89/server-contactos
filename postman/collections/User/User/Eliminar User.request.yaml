@@ -1,4 +1,4 @@
 $kind: http-request
-url: ""
+url: "{{url}}/api/auth/delete/"
 method: GET
 order: 3000

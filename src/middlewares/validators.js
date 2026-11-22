@@ -1,6 +1,7 @@
 import { validationResult } from "express-validator";
 import { check } from "express-validator";
 import User from "../models/User.js";
+import Categoria from "../models/category.js";
 
 export const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
@@ -90,3 +91,32 @@ export const verifyEmailValidation = () => [
     .normalizeEmail(),
   handleValidationErrors,
 ];
+//validar rol de admin
+export const validarRolAdmin = (req, res, next) => {
+  const rol = req.user.role;
+
+  if (rol !== "admin") {
+    return res.status(401).json({
+      ok: false,
+      message: "No tiene permisos para realizar esta acción",
+    });
+  }
+  next();
+};
+
+//validar categoria por id
+export const validarCategoriaPorId = async (id) => {
+  const existeCategoria = await Categoria.findOne({ _id: id });
+
+  if (!existeCategoria) {
+    throw new Error("no existe una categoria con ese id");
+  }
+};
+
+export const validarProductoPorId = async (id) => {
+  const existeProducto = await Product.findById(id);
+
+  if (!existeProducto) {
+    throw new Error("No existe un producto con ese id");
+  }
+};
